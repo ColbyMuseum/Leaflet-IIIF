@@ -253,11 +253,13 @@ describe('L.TileLayer.Iiif', function() {
       map.addLayer(iiifLayerSetMaxBounds);
       iiifLayerSetMaxBounds.on('load', function() {
         
-        $.when(iiifLayerSetMaxBounds._infoDeferred).done( function() { expect(iiifLayerSetMaxBounds.options.setMaxBounds).toBe(true); } ); 
+        $.when(iiifLayerSetMaxBounds._infoDeferred).done( function() { 
+          expect(iiifLayerSetMaxBounds.options.setMaxBounds).toBe(true); 
+          done();
+        } ); 
         expect(map.options.maxBounds.getSouthWest().toString()).toBe('LatLng(-478, 0)');
         expect(map.options.maxBounds.getNorthEast().toString()).toBe('LatLng(0, 679)');
-        done();
-
+        
       });
     });
 
