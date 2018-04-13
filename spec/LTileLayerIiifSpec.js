@@ -258,7 +258,9 @@ describe('L.TileLayer.Iiif', function() {
         expect(iiifLayerSetMaxBounds.options.setMaxBounds).toBe(true); 
         expect(map.options.maxBounds.getSouthWest().toString()).toBe('LatLng(-478, 0)');
         expect(map.options.maxBounds.getNorthEast().toString()).toBe('LatLng(0, 679)');
-        setTimeout( function(){ done(); }, 2000);
+
+        // Wait for the deferred info on the layer to complete
+        setTimeout( function(){ done(); }, 100);
       });
     });
 
