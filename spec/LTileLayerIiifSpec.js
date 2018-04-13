@@ -251,15 +251,14 @@ describe('L.TileLayer.Iiif', function() {
     it('can be configured to be on', function(done) {
       var iiifLayerSetMaxBounds = iiifLayerFactory({ setMaxBounds: true });
       map.addLayer(iiifLayerSetMaxBounds);
+
+
       iiifLayerSetMaxBounds.on('load', function() {
         
-        $.when(iiifLayerSetMaxBounds._infoDeferred).done( function() { 
-          expect(iiifLayerSetMaxBounds.options.setMaxBounds).toBe(true); 
-          done();
-        } ); 
+        expect(iiifLayerSetMaxBounds.options.setMaxBounds).toBe(true); 
         expect(map.options.maxBounds.getSouthWest().toString()).toBe('LatLng(-478, 0)');
         expect(map.options.maxBounds.getNorthEast().toString()).toBe('LatLng(0, 679)');
-        
+        setTimeout( function(){ done(); }, 2000);
       });
     });
 
